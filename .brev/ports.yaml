@@ -1,0 +1,14 @@
+# Here we can specify which ports we want publicly accessible. Currently by default
+# any connection to your service is password protected.
+
+# For example, if we run a React app, we may want to make 3000 open
+# to communicate with our backend, or to share a public link of our project.
+
+# USE CASES:
+# Testing (sending requests through Postman)
+# Frontend - backend connection (sending and receiving requests)
+# Production deploys (post a public url of your website)
+
+version: 1.0
+ports:
+  # - "3000" # UNCOMMENT THIS LINE TO MAKE THE PORT PUBLIC
