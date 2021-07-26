@@ -4,7 +4,8 @@
 sudo apt-get install -y build-essential
 
 ##### Setting up VSCode defaults #####
-cp .brev/settings.json ../.vscode/settings.json 
+mkdir -p /home/brev/.local/share/code-server/User
+cp .vscode/settings.json /home/brev/.local/share/code-server/User/settings.json
 
 ##### Your VSCode Extensions (EDIT) #####
 # code-server --install-extension <EXTENSION_ID>
