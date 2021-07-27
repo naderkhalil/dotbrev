@@ -11,11 +11,11 @@ cp .vscode/settings.json /home/brev/.local/share/code-server/User/settings.json
 # code-server --install-extension <EXTENSION_ID>
 
 ##### Recommended VSCode Extensions #####
-# code-server --install-extension esbenp.prettier-vscode
-# code-server --install-extension dbaeumer.vscode-eslint
-# code-server --install-extension golang.go
-# code-server --install-extension ryanolsonx.solarized
-# code-server --install-extension ms-vscode.sublime-keybindings
+code-server --install-extension esbenp.prettier-vscode
+code-server --install-extension dbaeumer.vscode-eslint
+code-server --install-extension golang.go
+code-server --install-extension ryanolsonx.solarized
+code-server --install-extension ms-vscode.sublime-keybindings
 # code-server --install-extension tyriar.sort-lines
 # code-server --install-extension ms-azuretools.vscode-docker
 
