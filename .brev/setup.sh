@@ -24,23 +24,27 @@ sudo apt-get install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo "zsh" >> ~/.bashrc
 cat .brev/.bash_profile >> ~/.zshrc
+
+##### Add Env Name to Terminal Prompt #####
+# Define a function called getName
+function getName {
+  # Use jq to extract the "workspaceId" key from the "/etc/meta/workspace.json" file
+  workspaceId=$(jq -r '.workspaceId' /etc/meta/workspace.json)
+
+  # Use brev ls to list the dev environments and grep for the row that contains the workspace ID
+  row=$(brev ls | grep "$workspaceId")
+
+  # Extract the "NAME" column from the row using awk
+  name=$(echo "$row" | awk '{print $1}')
+
+  # Print the name
+  echo "$name"
+}
+
+# Get the name using the getName function
+name=$(getName)
+
+# Replace the PROMPT line in robbyrussell.zsh-theme with a new prompt that includes the name
+sed -i "s/^PROMPT=.*/PROMPT=\"%{\$fg_bold[cyan]%}$name %(?:%{\$fg_bold[green]%}➜ :%{\$fg_bold[red]%}➜ )\"/" ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+
 source ~/.zshrc
-
-##### Yarn #####
-# curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add
-# echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-# sudo apt update
-# sudo apt install -y yarn
-
-##### Node v14.x + npm #####
-# curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-# sudo apt-get install -y nodejs
-
-##### Python + Pip + Poetry #####
-# sudo apt-get install -y python3-distutils
-# sudo apt-get install -y python3-apt
-# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
-# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-# python3 get-pip.py
-# rm get-pip.py
-# source $HOME/.poetry/env
